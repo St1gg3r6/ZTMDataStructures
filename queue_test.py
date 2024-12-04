@@ -24,13 +24,13 @@ class Queue:
         return None
     
     def enqueue(self, value):
+        new_node = Node(value)
         if self.length == 0:
-            self.first = Node(value)
-            self.last = self.first
-        else:
-            new_node = Node(value)
-            new_node.next = self.first
             self.first = new_node
+            self.last = new_node
+        else:
+            self.last.next = new_node
+            self.last = new_node
         self.length += 1
 
     def dequeue(self):
@@ -52,7 +52,7 @@ for val in vals:
     print(myqueue)
 print()
 for val in vals:
-    myqueue.dequeue()
+    print(myqueue.dequeue())
     print(myqueue)
 
     
